@@ -24,10 +24,10 @@ public class HotelRegisterUserPopTest {
         driver.get("https://hotel-testlab.coderslab.pl/en/");
         HotelMainPage mainPage = new HotelMainPage(driver);
         mainPage.clickSignIn();
-        // sign in page
-//        WebElement emailInput = driver.findElement(By.id("email_create"));
-//        String randomEmail = UUID.randomUUID().toString() + "@mail.pl";
-//        emailInput.sendKeys(randomEmail + Keys.ENTER);
+
+        HotelAuthenticationPage authenticationPage = new HotelAuthenticationPage(driver);
+        final String randomEmail = UUID.randomUUID().toString() + "@mail.pl";
+        authenticationPage.fillCreateAnAccount(randomEmail + Keys.ENTER);
 //        // CREATE AN ACCOUNT
 //        WebElement firstNameInput = driver.findElement(By.id("customer_firstname"));
 //        assertDisplayedAndEnabled(firstNameInput);
