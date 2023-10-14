@@ -1,21 +1,22 @@
 package pl.coderslab.seleniumcourseonlteaw43.pop;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DuckDuckGoSearchResultsPage {
-    private WebDriver driver;
+    @FindBy(css = "ol.react-results--main li article h2 a")
+    private List<WebElement> resultsLinks;
 
     public DuckDuckGoSearchResultsPage(WebDriver driver) {
-        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public List<String> getTextsFromResultsLinks() {
-        List<WebElement> resultsLinks = driver.findElements(By.cssSelector("ol.react-results--main li article h2 a"));
         List<String> result = new ArrayList<>();
         for(WebElement we : resultsLinks) {
             result.add(we.getText());
@@ -23,5 +24,4 @@ public class DuckDuckGoSearchResultsPage {
 
         return result;
     }
-
 }
