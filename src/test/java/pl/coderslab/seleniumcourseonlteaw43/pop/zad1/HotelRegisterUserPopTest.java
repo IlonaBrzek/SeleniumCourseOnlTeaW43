@@ -8,6 +8,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pl.coderslab.seleniumcourseonlteaw43.Util;
 
 import java.time.Duration;
 import java.util.UUID;
@@ -26,7 +27,7 @@ public class HotelRegisterUserPopTest {
         mainPage.clickSignIn();
 
         HotelAuthenticationPage authenticationPage = new HotelAuthenticationPage(driver);
-        final String randomEmail = UUID.randomUUID().toString() + "@mail.pl";
+        final String randomEmail = Util.generateRandomEmail();
         authenticationPage.fillCreateAnAccount(randomEmail + Keys.ENTER);
 //        // CREATE AN ACCOUNT
 //        WebElement firstNameInput = driver.findElement(By.id("customer_firstname"));
