@@ -26,9 +26,8 @@ public class DuckDuckGoSearchPopTest {
     public void searchWithDdgEnter() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://duckduckgo.com/");
-        WebElement searchInput = driver.findElement(By.id("searchbox_input"));
-        searchInput.sendKeys("w pustyni i w puszczy" + Keys.ENTER);
 
-//        searchInput.sendKeys(Keys.ENTER);
+        DuckDuckGoMainPage ddgMainPage = new DuckDuckGoMainPage(driver);
+        ddgMainPage.fillSearchInput("w pustyni i w puszczy" + Keys.ENTER);
     }
 }
