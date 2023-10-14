@@ -1,6 +1,8 @@
 package pl.coderslab.seleniumcourseonlteaw43.pop;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -10,11 +12,11 @@ import java.time.Duration;
 import java.util.List;
 
 public class DuckDuckGoSearchPopTest {
+    private WebDriver driver;
+
     @Test
     public void searchWithDdg() {
         // given
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(8));
         driver.get("https://duckduckgo.com/");
         // when
         DuckDuckGoMainPage ddgMainPage = new DuckDuckGoMainPage(driver);
@@ -32,13 +34,10 @@ public class DuckDuckGoSearchPopTest {
                 Assertions.fail(String.format("search result should contain: %s, but was: %s", searchPhraseLower, linkTextLower));
             }
         }
-        //driver.quit();
     }
 
     @Test
     public void searchWithDdgEnter() {
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(8));
         driver.get("https://duckduckgo.com/");
 // when
         final String searchPhrase = "w pustyni i w puszczy";
@@ -55,5 +54,16 @@ public class DuckDuckGoSearchPopTest {
                 Assertions.fail(String.format("search result should contain: %s, but was: %s", searchPhraseLower, linkTextLower));
             }
         }
+    }
+
+    @BeforeEach
+    public void beforeEach() {
+        this.driver = new ChromeDriver();
+        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(8));
+    }
+
+    @AfterEach
+    public void afterEach() {
+        this.driver.quit();
     }
 }
