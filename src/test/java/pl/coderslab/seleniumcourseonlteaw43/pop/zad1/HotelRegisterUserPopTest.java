@@ -31,7 +31,7 @@ public class HotelRegisterUserPopTest {
                 .setLastName("makota")
                 .setMr(false)
                 .setPassword("alamakota123")
-                .setSignUpForNewsletter(false);
+                .setSignUpForNewsletter(true);
 
         createAnAccountPage.fillForm(userData);
         createAnAccountPage.clickRegisterButton();
