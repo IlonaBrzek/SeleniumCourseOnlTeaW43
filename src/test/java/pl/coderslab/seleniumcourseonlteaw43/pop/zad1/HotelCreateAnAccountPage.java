@@ -1,6 +1,5 @@
 package pl.coderslab.seleniumcourseonlteaw43.pop.zad1;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,16 +22,16 @@ public class HotelCreateAnAccountPage {
     }
 
     public void clickRegisterButton() {
-//        assertDisplayedAndEnabled(submitButton);
+        assertDisplayedAndEnabled(registerButton);
         registerButton.click();
     }
 
     public void fillForm(UserData userData) {
-//        assertDisplayedAndEnabled(firstNameInput);
+        assertDisplayedAndEnabled(firstNameInput);
         firstNameInput.sendKeys(userData.getFirstName());
-//        assertDisplayedAndEnabled(lastNameInput);
+        assertDisplayedAndEnabled(lastNameInput);
         lastNameInput.sendKeys(userData.getLastName());
-//        assertDisplayedAndEnabled(passwordInput);
+        assertDisplayedAndEnabled(passwordInput);
         passwordInput.sendKeys(userData.getPassword());
     }
 }
