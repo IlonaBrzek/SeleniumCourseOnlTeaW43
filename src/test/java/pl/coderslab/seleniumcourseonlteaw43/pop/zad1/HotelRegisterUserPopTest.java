@@ -3,19 +3,14 @@ package pl.coderslab.seleniumcourseonlteaw43.pop.zad1;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pl.coderslab.seleniumcourseonlteaw43.Util;
 
 import java.time.Duration;
-import java.time.LocalDate;
-import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static pl.coderslab.seleniumcourseonlteaw43.Util.assertDisplayedAndEnabled;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class HotelRegisterUserPopTest {
     private WebDriver driver;
@@ -38,10 +33,9 @@ public class HotelRegisterUserPopTest {
 
         createAnAccountPage.fillForm(userData);
         createAnAccountPage.clickRegisterButton();
-//        // MY ACCOUNT
-//        WebElement accountCreationSuccessPanel = driver.findElement(By.cssSelector("p.alert.alert-success"));
-//        String panelText = accountCreationSuccessPanel.getText();
-//        assertEquals("Your account has been created.", panelText);
+
+        HotelMyAccountPage myAccountPage = new HotelMyAccountPage(driver);
+        assertTrue(myAccountPage.isAccountCreationSuccessPanelDisplayed());
     }
 
     @BeforeEach
