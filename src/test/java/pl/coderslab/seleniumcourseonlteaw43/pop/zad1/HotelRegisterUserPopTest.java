@@ -29,7 +29,9 @@ public class HotelRegisterUserPopTest {
         UserData userData = new UserData()
                 .setFirstName("ala")
                 .setLastName("makota")
-                .setPassword("alamakota123");
+                .setMr(false)
+                .setPassword("alamakota123")
+                .setSignUpForNewsletter(false);
 
         createAnAccountPage.fillForm(userData);
         createAnAccountPage.clickRegisterButton();

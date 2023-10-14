@@ -1,6 +1,5 @@
 package pl.coderslab.seleniumcourseonlteaw43;
 
-import dev.failsafe.internal.util.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebElement;
 
@@ -15,5 +14,13 @@ public class Util {
 
     public static String generateRandomEmail() {
         return UUID.randomUUID().toString() + "@mail.pl";
+    }
+
+    public static void setCheckbox(WebElement checkbox, boolean isChecked) {
+        if((isChecked && (checkbox.getAttribute("checked") == null)) ||
+           (!isChecked && (checkbox.getAttribute("checked") != null))
+        ) {
+            checkbox.click();
+        }
     }
 }

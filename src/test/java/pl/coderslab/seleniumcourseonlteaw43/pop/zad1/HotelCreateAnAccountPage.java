@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import static pl.coderslab.seleniumcourseonlteaw43.Util.assertDisplayedAndEnabled;
+import static pl.coderslab.seleniumcourseonlteaw43.Util.setCheckbox;
 
 public class HotelCreateAnAccountPage {
     @FindBy(id = "submitAccount")
@@ -16,6 +17,12 @@ public class HotelCreateAnAccountPage {
     private WebElement lastNameInput;
     @FindBy(id = "passwd")
     private WebElement passwordInput;
+    @FindBy(id = "newsletter")
+    private WebElement newsletterCheckbox;
+    @FindBy(id = "id_gender1")
+    private WebElement radioButtonMr;
+    @FindBy(id = "id_gender2")
+    private WebElement radioButtonMrs;
 
     public HotelCreateAnAccountPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -28,10 +35,20 @@ public class HotelCreateAnAccountPage {
 
     public void fillForm(UserData userData) {
         assertDisplayedAndEnabled(firstNameInput);
-        firstNameInput.sendKeys(userData.getFirstName());
         assertDisplayedAndEnabled(lastNameInput);
-        lastNameInput.sendKeys(userData.getLastName());
         assertDisplayedAndEnabled(passwordInput);
+//        assertDisplayedAndEnabled(radioButtonMr);
+//        assertDisplayedAndEnabled(radioButtonMrs);
+        assertDisplayedAndEnabled(newsletterCheckbox);
+
+        if(userData.isMr()) {
+            radioButtonMr.click();
+        } else {
+            radioButtonMrs.click();
+        }
+        firstNameInput.sendKeys(userData.getFirstName());
+        lastNameInput.sendKeys(userData.getLastName());
         passwordInput.sendKeys(userData.getPassword());
+        setCheckbox(newsletterCheckbox, userData.isSignUpForNewsletter());
     }
 }

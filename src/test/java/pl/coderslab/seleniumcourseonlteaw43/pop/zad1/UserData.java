@@ -4,6 +4,8 @@ public class UserData {
     private String firstName;
     private String lastName;
     private String password;
+    private boolean isMr;
+    private boolean isSignUpForNewsletter;
 
     public UserData setFirstName(String firstName) {
         this.firstName = firstName;
@@ -20,6 +22,16 @@ public class UserData {
         return this;
     }
 
+    public UserData setMr(boolean mr) {
+        isMr = mr;
+        return this;
+    }
+
+    public UserData setSignUpForNewsletter(boolean signUpForNewsletter) {
+        isSignUpForNewsletter = signUpForNewsletter;
+        return this;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -30,5 +42,13 @@ public class UserData {
 
     public String getPassword() {
         return password;
+    }
+
+    public boolean isMr() {
+        return isMr;
+    }
+
+    public boolean isSignUpForNewsletter() {
+        return isSignUpForNewsletter;
     }
 }
