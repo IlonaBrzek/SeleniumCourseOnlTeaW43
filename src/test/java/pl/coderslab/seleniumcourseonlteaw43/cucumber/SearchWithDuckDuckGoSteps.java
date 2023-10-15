@@ -19,17 +19,18 @@ public class SearchWithDuckDuckGoSteps {
     private DuckDuckGoSearchResultsPage ddgResultsPage;
     private final String searchPhrase = "w pustyni i w puszczy";
 
-    @Given("Page https:\\/\\/duckduckgo.com\\/ opened in browser")
-    public void pageOpenedInBrowser() {
+    @Given("Page {word} opened in browser")
+//    @Given("^Page (.*) opened in browser$")
+    public void pageOpenedInBrowser(String url) {
         this.driver = new ChromeDriver();
         this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(8));
-        this.driver.get("https://duckduckgo.com/");
+        this.driver.get(url);
         this.ddgMainPage = new DuckDuckGoMainPage(driver);
         this.ddgResultsPage = new DuckDuckGoSearchResultsPage(driver);
     }
 
-    @When("Phrase 'w pustyni i w puszczy' entered in search input box")
-    public void enterPhrase() {
+    @When("Phrase {string} entered in search input box")
+    public void enterPhrase(String searchPhrase) {
         ddgMainPage.fillSearchInput(searchPhrase);
     }
 
@@ -38,10 +39,10 @@ public class SearchWithDuckDuckGoSteps {
         ddgMainPage.clickSearchButton();
     }
 
-    @Then("First 3 search result text contain phrase 'w pustyni i w puszczy'")
-    public void resultsShouldContainPhrase() {
+    @Then("First {int} search result text contain phrase {string}")
+    public void resultsShouldContainPhrase(int count, String searchPhrase) {
         List<String> textsFromResultsLinks = ddgResultsPage.getTextsFromResultsLinks();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < count; i++) {
             String linkTextLower = textsFromResultsLinks.get(i).toLowerCase();
             String searchPhraseLower = searchPhrase.toLowerCase();
             if (!linkTextLower.contains(searchPhraseLower)) {
