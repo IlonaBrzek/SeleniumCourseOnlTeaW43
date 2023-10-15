@@ -1,6 +1,7 @@
 .idea/
 target/
 out/
+out
 *.iml
 *.exe
 # Compiled class file
