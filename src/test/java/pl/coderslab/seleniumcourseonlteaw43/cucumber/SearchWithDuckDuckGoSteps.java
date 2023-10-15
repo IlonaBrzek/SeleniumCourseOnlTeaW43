@@ -24,7 +24,6 @@ public class SearchWithDuckDuckGoSteps {
     private WebDriver driver;
     private DuckDuckGoMainPage ddgMainPage;
     private DuckDuckGoSearchResultsPage ddgResultsPage;
-    private final String searchPhrase = "w pustyni i w puszczy";
 
     @Given("Page {word} opened in browser")
 //    @Given("^Page (.*) opened in browser$")
